@@ -35,11 +35,10 @@ class App extends React.Component<IProps, IState> {
             body: JSON.stringify(data)
         });
         const res = await response.json();
-        console.log(res);
         const client = new Client({
             brokerURL: "ws://localhost:8080/rest/v1/stomp",
             connectHeaders: {
-                Authorization: "Bearer " + res,
+                Authorization: "Bearer " + res.token,
             },
             debug: function (str) {
                 console.log(str);
